@@ -31,11 +31,11 @@
                                             <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                         </div>
                                         <?php
-                                        if (!empty($_GET["notice"])) {
-                                            echo "<h1>{$_GET["notice"]}</h1>";
+                                        if (isset($login_error)) {
+                                            echo "<h4>{$login_error}</h4>";
                                         }
                                         ?>
-                                        <form class="user" action="../controller/LoginController.php" method="POST">
+                                        <form class="user" action="../controllers/LoginController.php" method="POST">
                                             <div class="form-group">
                                                 <input type="text" name="username" class="form-control form-control-user" 
                                                        id="exampleInputEmail" placeholder="Enter User Name..." required>
@@ -83,3 +83,5 @@
     </body>
 
 </html>
+
+

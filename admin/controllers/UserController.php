@@ -31,14 +31,14 @@ class UserController
                 // Check if username exists, if yes then verify password
                 if (mysqli_stmt_num_rows($stmt) == 1) {
                     // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
+                    mysqli_stmt_bind_result($stmt, $id, $username, $password, $fullname, $phonenumber, $email);
                     if (mysqli_stmt_fetch($stmt)) {
                         //                        if (password_verify($password, $hashed_password)) {
                         //                            return constant("LOGIN_SUCCESS_CODE");
                         //                        } else {
                         //                            return constant("LOGIN_FAILED_NOTFOUND_CODE");
                         //                        }
-                        if ($user->getPassword() === $hashed_password) {
+                        if ($user->getPassword() === $password) {
                             return constant("LOGIN_SUCCESS_CODE");
                         }
                         return constant("LOGIN_FAILED_NOTFOUND_CODE");

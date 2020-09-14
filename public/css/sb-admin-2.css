@@ -10803,13 +10803,13 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("../asset/image/loginbanner.jpeg");
+  background: url("../assets/images/loginbanner.jpeg");
   background-position: center;
   background-size: cover;
 }
 
 .bg-register-image {
-  background: url("../asset/image/registerbanner.jpeg");
+  background: url("../assets/images/registerbanner.jpeg");
   background-position: center;
   background-size: cover;
 }

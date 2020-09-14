@@ -31,7 +31,7 @@ and open the template in the editor.
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user" action="../controller/RegisterController.php" method="POST">
+                            <form class="user" action="../controllers/RegisterController.php" method="POST">
                                 <div class="form-group">
                                     <input type="text" name="fullname" class="form-control form-control-user" id="exampleInputEmail" placeholder="Full Name" required>
                                 </div>
@@ -83,3 +83,40 @@ and open the template in the editor.
 </body>
 
 </html>
+
+<!-- PHP -->
+<?php
+
+require_once '../../admin/config/config.php';
+include '../../admin/controllers/UserController.php';
+include '../../admin/models/User.php';
+
+session_start();
+
+$username = $password = $fullname = $phonenumber = $email = "";
+
+// function ValidatePhoneNumber($phonenumber)
+// {
+//     if (preg_match("/^[0-9]{3}-[0-9]{4}-[0-9]{4}$/", $phonenumber)) {
+//         return true;
+//     }
+//     return false;
+// }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $username = trim($_POST["username"]);
+    $password = trim($_POST["password"]);
+    $fullname = trim($_POST["fullname"]);
+    $phonenumber = trim($_POST["phonenumber"]);
+    $email = trim($_POST["email"]);
+
+    $user = new User();
+    $user->setUserName($username);
+    $user->setPassword($password);
+    $user->setFullName($fullname);
+    $user->setPhoneNumber($phonenumber);
+    $user->setEmail($email);
+}
+
+?>

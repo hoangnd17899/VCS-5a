@@ -1,9 +1,10 @@
+<!-- PHP -->
 <?php
 require_once '../../admin/config/config.php';
-include '../../admin/controller/UserController.php';
-include '../../admin/model/User.php';
-
-session_start();
+include '../../admin/controllers/UserController.php';
+include '../../admin/models/User.php';
+?>
+<?php
 
 $username = $password = "";
 $username_err = $password_err = "";
@@ -41,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 // Store data in session variables
                 $_SESSION["loggedin"] = true;
-                $_SESSION["id"] = $id;
                 $_SESSION["username"] = $username;
 
                 // Redirect user to welcome page
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 break;
             //login failed
             case constant("LOGIN_FAILED_NOTFOUND_CODE"):
-                header("location: /StudentManagement/public/views/Login.php?notice=" . constant("LOGIN_FAILED_NOTFOUND"));
+                $login_error = "Username or password is not exist ...";
                 break;
             // server error
             case constant("SERVER_ERROR_CODE"):
@@ -57,3 +57,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+?>
